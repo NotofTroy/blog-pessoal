@@ -8,11 +8,11 @@ interface minhaProps {
 
 function Home(props:minhaProps){
     const [completed, setCompleted] = useState(false);
-    const [tarefa, setTarefa] = useState("");
+    const [loggedIn, setLoggedin] = useState(false);
 
     useEffect(() => {
         if(completed) {
-            setTarefa("Parabéns! Você concluiu a tarefa!")
+            setLoggedin(true);
         }
     }, [completed])
 
@@ -20,8 +20,12 @@ function Home(props:minhaProps){
         <>            
             <h1 className="titulo">{props.title}</h1>
             <p>{props.description}</p>
-            <button onClick={()=> setCompleted(true)}>Concluir tarefa</button>
-            <h3>{tarefa}</h3>
+
+            {loggedIn ? (
+                <h2>Bem-vinde de volta!</h2>
+            ) : (
+                <button onClick={()=> setCompleted(true)}>Fazer login</button>
+            )}
 
             <img src="https://i.imgur.com/H88yIo2.png" alt="Imagem Tela Inicial" className="img"/>
         </>
