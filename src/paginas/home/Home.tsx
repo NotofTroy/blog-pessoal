@@ -1,34 +1,20 @@
 import './Home.css';
-import { useState, useEffect } from "react";
 
-interface minhaProps {
-    title: string
-    description: string
-}
-
-function Home(props:minhaProps){
-    const [completed, setCompleted] = useState(false);
-    const [loggedIn, setLoggedin] = useState(false);
-
-    useEffect(() => {
-        if(completed) {
-            setLoggedin(true);
-        }
-    }, [completed])
+function Home() {
 
     return (
-        <>            
-            <h1 className="titulo">{props.title}</h1>
-            <p>{props.description}</p>
+        <div className="bg-indigo-900 flex justify-center">
+            <div className='container grid grid-cols-2 text-white'>
+                <div className="flex flex-col gap-4 items-center justify-center py-4">
+                    <h2 className='text-5xl font-bold'>Seja bem vinde!</h2>
+                    <p className='text-xl'>Expresse aqui seus pensamentos e opiniões</p>
 
-            {loggedIn ? (
-                <h2>Bem-vinde de volta!</h2>
-            ) : (
-                <button onClick={()=> setCompleted(true)}>Fazer login</button>
-            )}
-
-            <img src="https://i.imgur.com/H88yIo2.png" alt="Imagem Tela Inicial" className="img"/>
-        </>
+                    <div className="flex justify-around gap-4">
+                        <button className='rounded bg-white text-blue-800 py-2 px-4'>Ver postagens</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
